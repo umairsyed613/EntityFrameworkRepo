@@ -25,7 +25,8 @@ Getting Started
 First, ensure your project has a `DbContext`. Here's a simple example:
 
 
-```csharp 
+```csharp
+
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -34,6 +35,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<YourEntity> YourEntities { get; set; }
 }
+
 ```
 
 ### Implementing IRepository
@@ -92,6 +94,7 @@ Create an interface `IDatabaseContext` that your `DbContext` will implement:
 
 
 ```csharp
+
 public interface IDatabaseContext
 {
     DbSet<T> Set<T>() where T : class;
@@ -106,15 +109,7 @@ Make your `DbContext` implement `IDatabaseContext`:
 
 
 ```csharp
-public class ApplicationDbContext : DbContext, IDatabaseContext {     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)         : base(options)     {}      // Implementation of DbSet<T> and SaveChangesAsync already provided by DbContext     // Just ensure it implements IDatabaseContext }
-```
 
-### Configuring the Repository with IDatabaseContext
-
-When setting up your repository in the DI container, ensure it uses `IDatabaseContext`:
-
-
-```csharp
 public class ApplicationDbContext : DbContext, IDatabaseContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -123,6 +118,24 @@ public class ApplicationDbContext : DbContext, IDatabaseContext
 
     // Implementation of DbSet<T> and SaveChangesAsync already provided by DbContext
     // Just ensure it implements IDatabaseContext
+}
+
+```
+
+### Configuring the Repository with IDatabaseContext
+
+When setting up your repository in the DI container, ensure it uses `IDatabaseContext`:
+
+
+```csharp
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+    services.AddScoped<IDatabaseContext>(provider => provider.GetService<ApplicationDbContext>());
+    services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 }
 
 ```
