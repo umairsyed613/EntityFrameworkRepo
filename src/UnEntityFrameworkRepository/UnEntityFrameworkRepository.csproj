@@ -7,7 +7,6 @@
         <Authors>Umair Syed</Authors>
         <Description>Entity Framework Repository Pattern</Description>
         <PackageTags>Dotnet, EntityFramework Core, Repository Pattern</PackageTags>
-        <PackageVersion>${{ env.PACKAGE_VERSION }}</PackageVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
