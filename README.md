@@ -1,5 +1,5 @@
-# EntityFrameworkRepo
-`EntityFrameworkRepo` is a lightweight, easy-to-use repository pattern implementation designed for .NET applications. It abstracts data access to make your application more testable and maintainable.
+# UnEntityFrameworkRepo
+`UnEntityFrameworkRepository` is a lightweight, easy-to-use repository pattern implementation designed for .NET applications. It abstracts data access to make your application more testable and maintainable.
 
 ## Features
 
