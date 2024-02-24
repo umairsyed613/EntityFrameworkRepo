@@ -40,3 +40,9 @@ jobs:
         path: nuget-published
     - name: Publish Nuget Package
       run: dotnet nuget push nuget-published/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    - name: Create Release and Tag
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        PACKAGE_VERSION=${{ env.PACKAGE_VERSION }}
+        gh release create v$PACKAGE_VERSION nuget-published/*.nupkg -t "Release v$PACKAGE_VERSION" -n "Read the changes in Readme"
