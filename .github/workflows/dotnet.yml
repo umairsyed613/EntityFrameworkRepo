@@ -40,6 +40,7 @@ jobs:
         path: nuget-published
     
     - name: Create Release and Tag
+      working-directory: src/
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
