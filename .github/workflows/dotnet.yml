@@ -21,4 +21,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore src/UnEntityFrameworkRepository.sln
     - name: Build
-      run: dotnet build src/UnEntityFrameworkRepository/UnEntityFrameworkRepository.csproj --no-restore
+      run: dotnet build src/UnEntityFrameworkRepository/UnEntityFrameworkRepository.csproj --configuration Release --no-restore
+    - name: Pack Nuget Package
+      run: dotnet pack src/UnEntityFrameworkRepository/UnEntityFrameworkRepository.csproj /p:Version=${{github.event.release.tag_name}} --output nuget-published --configuration Release
+    - name: Publish Nuget Package
+      run: dotnet nuget push ****/nuget-published/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
