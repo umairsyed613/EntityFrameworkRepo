@@ -30,6 +30,7 @@ jobs:
   publish:
     needs: build-and-package
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/nuget'
     environment: NuGetPublish
     steps:
     - name: Download Nuget Package Artifact
