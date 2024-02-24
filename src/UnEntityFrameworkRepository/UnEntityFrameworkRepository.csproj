@@ -4,9 +4,16 @@
         <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>1.0.0</Version>
+        <Authors>Umair Syed</Authors>
         <Description>Entity Framework Repository Pattern</Description>
+        <PackageTags>Dotnet, EntityFramework Core, Repository Pattern</PackageTags>
+        <PackageVersion>${{ env.PACKAGE_VERSION }}</PackageVersion>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="/" />
+    </ItemGroup>
 
     <!-- For .NET 6.0 -->
     <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
