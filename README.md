@@ -18,7 +18,7 @@
 This package is available on NuGet. You can install it via the NuGet Package Manager Console:
 
 ```powershell
-Install-Package EntityFrameworkRepo -Version 1.0.0
+Install-Package EntityFrameworkRepo
 ```
 
 Getting Started
