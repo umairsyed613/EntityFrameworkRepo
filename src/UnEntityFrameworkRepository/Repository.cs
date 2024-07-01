@@ -15,6 +15,11 @@ public class Repository<T> : IRepository<T> where T : class
         _entities = context.Set<T>();
     }
 
+    public Task<IQueryable<T>> GetAsQueryable()
+    {
+        return Task.FromResult(_entities.AsQueryable());
+    }
+
     public async Task<T[]> GetAll(Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null!)
     {
         var query = _entities.AsQueryable();

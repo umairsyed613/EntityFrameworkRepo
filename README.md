@@ -9,12 +9,16 @@
 - Configurable for any `DbContext`.
 - Dependency Injection friendly.
 
+## Status
+[![Build, Package & Deploy](https://github.com/umairsyed613/UnEntityFrameworkRepository/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/umairsyed613/UnEntityFrameworkRepository/actions/workflows/dotnet.yml)
+[![NuGet version](https://badge.fury.io/nu/UnEntityFrameworkRepository.svg)](https://badge.fury.io/nu/UnEntityFrameworkRepository)
+[![Nuget downloads (EFDbFactory.Sql)](https://img.shields.io/nuget/dt/UnEntityFrameworkRepository)](https://nuget.org/packages/UnEntityFrameworkRepository)
 ## Installation
 
 This package is available on NuGet. You can install it via the NuGet Package Manager Console:
 
 ```powershell
-Install-Package EntityFrameworkRepo -Version 1.0.0
+Install-Package UnEntityFrameworkRepository
 ```
 
 Getting Started

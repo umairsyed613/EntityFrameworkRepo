@@ -5,6 +5,7 @@ namespace UnEntityFrameworkRepository;
 
 public interface IRepository<T> where T : class
 {
+    Task<IQueryable<T>> GetAsQueryable();
     Task<T[]> GetAll(Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null!);
 
     Task<T[]> GetAll(Expression<Func<T, bool>> predicate,
